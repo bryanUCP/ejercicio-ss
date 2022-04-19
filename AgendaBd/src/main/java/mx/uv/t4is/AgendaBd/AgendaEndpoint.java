@@ -28,6 +28,9 @@ public class AgendaEndpoint {
     @Autowired
     Iagenda iagenda;
 
+    //--------------------------------------------------------------------------------------------------------
+    /*En esta parte recibimos los datos del xsd para la accion de registrar, los guardamos en la base de datos y despues los mostramos en pantalla
+    con la parte del response*/
 
     @PayloadRoot(localPart = "AgendarEventoRequest", namespace = "https://t4is.uv.mx/agenda")
     @ResponsePayload
@@ -51,6 +54,9 @@ public class AgendaEndpoint {
 
     //------------------------------------------------------------------------
 
+    /* En esta parte no recibimos nada del xsd pero mostramos los datos de los eventos registrados en la base de datos
+    en pantalla con EventosResponse*/
+
     @PayloadRoot(localPart = "EventosRequest", namespace = "https://t4is.uv.mx/agenda")
     @ResponsePayload
     public EventosResponse Eventos(){
@@ -69,6 +75,9 @@ public class AgendaEndpoint {
     }
 
     //------------------------------------------------------------------------
+
+    /*En esta parte hacemos la accion de modificar eventos, introducimos el id del evento que queremos modificar y tambien los datos nuevos,
+    se guardan los datos en la base de datos y despues se muestran con el ModificarEventoResponse*/
 
     @PayloadRoot(localPart = "ModificarEventoRequest", namespace = "https://t4is.uv.mx/agenda")
     @ResponsePayload
@@ -103,7 +112,10 @@ public class AgendaEndpoint {
         return respuesta;
     }
 
-    //------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------
+
+    /*En esta parte modificamos un evento mediante su id, introducimos el id del evento a eliminar en el Request, lo borra en la base de datos y
+    despues mostramos la lista de eventos de la base pero ya actualizada con el evento ya borrado. eso se muestra con el Response*/
 
     @PayloadRoot(localPart = "EliminarEventoRequest", namespace = "https://t4is.uv.mx/agenda")
     @ResponsePayload
